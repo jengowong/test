@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+                             http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+    <display-name>Welcome 2 test web</display-name>
+
+
+    <servlet>
+        <servlet-name>upload_a</servlet-name>
+        <servlet-class>com.github.jengo.a.HandlingHttpRequestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>upload_a</servlet-name>
+        <url-pattern>/test/upload_a</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>upload_b</servlet-name>
+        <servlet-class>com.github.jengo.b.HandlingHttpRequestServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>upload_b</servlet-name>
+        <url-pattern>/test/upload_b</url-pattern>
+    </servlet-mapping>
+</web-app>
