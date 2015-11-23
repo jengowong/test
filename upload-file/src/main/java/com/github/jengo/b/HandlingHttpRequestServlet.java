@@ -34,8 +34,10 @@ public class HandlingHttpRequestServlet extends HttpServlet {
 
         //得到绝对文件夹路径，比如"D:\\Tomcat6\\webapps\\test\\upload"
         String path = req.getRealPath("/upload");
+        LOG.info("path={}", path);
         //临时文件夹路径
         String repositoryPath = req.getRealPath("/upload/temp");
+        LOG.info("repositoryPath={}", repositoryPath);
         //设定临时文件夹为repositoryPath
         factory.setRepository(new File(repositoryPath));
         //设定上传文件的阈值，如果上传文件大于1M，就可能在repository
@@ -43,7 +45,7 @@ public class HandlingHttpRequestServlet extends HttpServlet {
         factory.setSizeThreshold(1024 * 1024);
 
         //得到相对文件夹路径，比如 "/test"
-        LOG.info(req.getContextPath());
+        LOG.info("contextPath={}", req.getContextPath());
         //创建一个ServletFileUpload对象
         ServletFileUpload uploader = new ServletFileUpload(factory);
 
@@ -66,14 +68,15 @@ public class HandlingHttpRequestServlet extends HttpServlet {
                 } else { //如果是文件
                     String value = fileItem.getName();
                     LOG.info("fileItem.getName()={}", value);
-                    int start = value.lastIndexOf("\\");
+                    int start = value.lastIndexOf("/");
                     String fileName = value.substring(start + 1);
+                    LOG.info("fileName={}", fileName);
                     //将其中包含的内容写到path(即upload目录)下名为fileName的文件中
                     fileItem.write(new File(path, fileName));
                 }
             }
         } catch (Exception e) {
-            LOG.error("upload文件异常的", e);
+            LOG.error("upload文件异常", e);
         }
 
         // 向客户端反馈结果

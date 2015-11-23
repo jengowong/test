@@ -37,4 +37,12 @@ public class UploadFileItem implements Serializable {
     public void setFileName(String fileName) {
         this.fileName = fileName;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder strBuilder = new StringBuilder();
+        strBuilder.append("formFieldName=").append(formFieldName)
+                .append(", fileName=").append(fileName);
+        return strBuilder.toString();
+    }
 }

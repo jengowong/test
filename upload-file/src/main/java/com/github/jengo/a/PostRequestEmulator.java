@@ -18,7 +18,7 @@ public class PostRequestEmulator {
 
     public static void main(String[] args) throws Exception {
         // 服务地址
-        URL url = new URL("http://127.0.0.1:8080/test/upload");
+        URL url = new URL("http://127.0.0.1:8080/test/upload_a");
         // 设定连接的相关参数
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 

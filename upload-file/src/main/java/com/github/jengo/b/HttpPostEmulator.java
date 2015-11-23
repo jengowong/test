@@ -1,11 +1,16 @@
 package com.github.jengo.b;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.*;
-import java.net.*;
-import java.util.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
 
 
 public class HttpPostEmulator {
+    private static final Logger LOG = LoggerFactory.getLogger(HttpPostEmulator.class);
 
     //每个post参数之间的分隔。随意设定，只要不会和其他的字符串重复即可。
     private static final String BOUNDARY = "----------HV2ymHFg03ehbqgZCaKO6jyH";
@@ -14,12 +19,14 @@ public class HttpPostEmulator {
                                       ArrayList<FormFieldKeyValuePair> generalFormFields,
                                       ArrayList<UploadFileItem> filesToBeUploaded)
             throws Exception {
+        LOG.info("serverUrl={}", serverUrl);
+        LOG.info("generalFormFIelds={}", generalFormFields);
+        LOG.info("filesToBeUploaded={}", filesToBeUploaded);
 
         // 向服务器发送post请求
-        //"http://127.0.0.1:8080/test/upload"*/
+        // "http://127.0.0.1:8080/test/upload"*/
         URL url = new URL(serverUrl);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-
         // 发送POST请求必须设置如下两行
         connection.setDoOutput(true);
         connection.setDoInput(true);

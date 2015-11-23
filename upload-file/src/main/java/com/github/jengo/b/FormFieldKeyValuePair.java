@@ -37,4 +37,12 @@ public class FormFieldKeyValuePair implements Serializable {
     public void setValue(String value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder strBuilder = new StringBuilder();
+        strBuilder.append("key=").append(key)
+                .append("value=").append(value);
+        return strBuilder.toString();
+    }
 }
